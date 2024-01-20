@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Tarea
 
+prueba = 15
 class Logueo(LoginView):
     template_name = "base/login.html"
     field = "__all__"
