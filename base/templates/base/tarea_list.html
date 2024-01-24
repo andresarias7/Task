@@ -1,3 +1,7 @@
+{% extends "base/principal.html" %}
+
+{% block content %}
+
 {% if request.user.is_authenticated  %}
     <p>{{request.user}}</p>
     <form method="post" action="{% url 'logout' %}">
@@ -16,6 +20,12 @@
 <h1>Lista de pendientes</h1>
 <a href="{% url "crear-tarea"%}">Crear nueva tarea</a>
 
+<form method="GET">
+    <input type="text" name="area-buscar" value="{{valor_buscado}}">
+    <input type="submit" value="Buscar" >
+</form>
+
+
 <table>
     <tr>
         <th>Elemento</th>
@@ -28,7 +38,6 @@
 
     <tr>
         <td>{{tarea.titulo}}</td>
-        <td><a href="{% url "tarea" tarea.id %}">Ver</a></td>
         <td><a href="{% url "editar-tarea" tarea.id %}">Editar</a></td>
         <td><a href="{% url "eliminar-tarea" tarea.id %}">Eliminar</a></td>
     </tr>
@@ -42,3 +51,5 @@
 
 
 </table>
+
+{% endblock content %}
